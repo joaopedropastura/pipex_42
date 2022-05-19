@@ -9,12 +9,12 @@ I created this file to briefing new external functions allowed this project
 •	Name: perror - print a system error message. <br>
 •	prototype: void	perror(const char *str); <br>
 •	This function return a message on standard output, first the string str is printed, followed the error menssage itself. <br>
-*	The example(1) shows how perror works **output expected** <br>
+*	The [example(1)](#link1) shows how perror works **output expected** <br>
 
 
-<<-----------------**EXAMPLES***----------------->>
+<p><<-----------------**EXAMPLES**----------------->></p>
 
-**example 1**
+<a id="link1">**example 1**</a><br>
 
 #include <stdio.h>
 
