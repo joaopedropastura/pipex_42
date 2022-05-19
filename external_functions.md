@@ -12,7 +12,7 @@ I created this file to briefing new external functions allowed this project
 *	The [example(1)](#link1) shows how perror works **output expected** <br>
 
 
-<p><<-----------------**EXAMPLES**----------------->></p>
+<h2><<-----------------**EXAMPLES**----------------->></h2>
 
 <a id="link1">**example 1**</a><br>
 
