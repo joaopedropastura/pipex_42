@@ -6,12 +6,12 @@
 /*   By: jpedro-s < jpedro-s@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 00:43:08 by jpedro-s          #+#    #+#             */
-/*   Updated: 2022/05/20 00:50:45 by jpedro-s         ###   ########.fr       */
+/*   Updated: 2022/05/20 02:28:51 by jpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h> // printf, fopen, fclose, rename
-#include <unistd.h> // perror
+#include <unistd.h> // perror, acess
 #include <stdlib.h> //malloc
 #include <string.h> // strerror
 #include <errno.h>
@@ -19,6 +19,7 @@
 int main()
 {
 	FILE *fp;
+	int fd;
 	char *str;
 	char *s = {"lapis de cor colorindo casas sem cor"};
 	int len = 0;
@@ -39,6 +40,15 @@ int main()
 	}
 	// rename("test.txt", "ntest.txt");
 	fp = fopen("non_existfile.txt", "r");
+	fd = access("ntest.txt", X_OK);
+	if(fd == -1)
+	{
+		printf("Error Number : %i\n", errno);
+		perror("Error: ");
+
+	}
+	else
+		printf("No error\n");
 	if(fp == NULL)
 	{
 		strerr = strerror(errno);
