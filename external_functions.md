@@ -1,18 +1,18 @@
 I created this file to briefing new external functions allowed this project
 
 <ol>
-	<li> perror <li>
-	<li> strerror <li>
+	<li> perror
+	<li> strerror
 </ol>
 <a name="link"></a>
-<h5>	1 - perror: </h5>
+<h4>	1 - perror: </h4>
 >	library: stdio.h <br>
 >	Name: perror - print a system error message. <br>
 >	prototype: void	perror(const char *str); <br>
 >	This function return a message on standard output, first the string str is printed, followed the error menssage itself. <br>
 >	The example(1) shows how perror works.<br>
 
-<h5>	2 - strerror: </h5>
+<h4>	2 - strerror: </h4>
 >	library: string.h, errno.h <br>
 >	Name: strerror - return string describing error number. <br>
 >	prototype: char	*strerror(int errnum); <br>
