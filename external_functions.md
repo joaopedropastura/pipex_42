@@ -1,9 +1,14 @@
-I created this file to briefing new external functions allowed this project
+<h3>I created this file to briefing new external functions allowed this project</h3>
 
-<ol>
-	<li> perror
-	<li> strerror
-</ol>
+<ul>
+	<li> function list
+		<ol>
+			<li> perror </li>
+			<li> strerror </li>
+		</ol>
+	</li>
+</ul>
+
 <a name="link"></a>
 <h4>	1 - perror: </h4>
 >	library: stdio.h <br>
