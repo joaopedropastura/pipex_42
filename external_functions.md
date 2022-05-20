@@ -5,17 +5,16 @@ I created this file to briefing new external functions allowed this project
 </ol>
 
 <p>	1 - perror: </p>
-•	library: <stdio.h> <br>
-•	Name: perror - print a system error message. <br>
-•	prototype: void	perror(const char *str); <br>
-•	This function return a message on standard output, first the string str is printed, followed the error menssage itself. <br>
-*	The [example(1)](#link1) shows how perror works **output expected** <br>
+>	library: <code><stdio.h></code> <br>
+>	Name: perror - print a system error message. <br>
+>	prototype: void	perror(const char *str); <br>
+>	This function return a message on standard output, first the string str is printed, followed the error menssage itself. <br>
+>	The [example(1)](#link1) shows how perror works **output expected** <br>
 
+<h4>-----------------**EXAMPLES**-----------------</h4>
 
-<h2><<-----------------**EXAMPLES**----------------->></h2>
-
-<a id="link1">**example 1**</a><br>
-
+<a id="#link1">**example 1**</a><br>
+<code>
 #include <stdio.h>
 
 int main()
@@ -29,3 +28,4 @@ int main()
 		fclose(f);
 	return(0);
 }
+</code>
