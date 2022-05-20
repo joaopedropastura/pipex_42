@@ -14,7 +14,7 @@ I created this file to briefing new external functions allowed this project
 <h4>-----------------**EXAMPLES**-----------------</h4>
 
 <a id="#link1">**example 1**</a><br>
-<code>
+<xmp>
 #include <stdio.h>
 
 int main()
@@ -28,4 +28,4 @@ int main()
 		fclose(f);
 	return(0);
 }
-</code>
+</xmp>
