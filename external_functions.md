@@ -1,16 +1,11 @@
 <h3>I created this file to briefing new external functions allowed this project</h3>
+<h4>function list</h4>
+<ol>
+	<li> perror
+	<li> strerror
+	<li> acess
+</ol>
 
-<ul>function list
-	<ol>
-		<li> perror
-		<li> strerror
-		<li> acess
-	</ol>
-</ul>
-
-
-
-<a name="link"></a>
 <h4>	1 - perror: </h4>
 >	library: "stdio.h" <br>
 >	Name: perror - print a system error message. <br>
@@ -29,14 +24,23 @@
 >	library: "unistd.h" <br>
 >	Name: acess - check real user's permissions for a file. <br>
 >	prototype: int	acess(const char *pathname, int mode); <br>
->	This function check whetherthe calling program has acess to a specifield file. Its can be used to check whether a file exist or not.<br>
+>	This function check whether the calling program has acess to a specifield file. Its can be used to check whether a file exist or not.<br>
+>	The example(3) shows how acess works.<br>
+>	List of mode parameter:
 <ul>
 	<li>	F_OK flag : Used to check for existence of file.
 	<li>	R_OK flag : Used to check for read permission bit.
 	<li>	W_OK flag : Used to check for write permission bit.
 	<li>	X_OK flag : Used to check for execute permission bit.
 </ul>
->	The example(3) shows how acess works.<br>
+
+<h4>	4 - dup && dup2: </h4>
+>	library: "unistd.h" <br>
+>	Name: dup - duplicate file descriptor. <br>
+>	prototype: int	dup(int	oldfd); <br>
+>	prototype: int	dup2(int oldfd, int newfd); <br>
+>	This function is very similar to <b>perror</b>, except its returns a pointer string error. <br>
+>	The example(2) shows how strerror works.<br>
 
 
 
@@ -103,6 +107,6 @@ int main()
 }
 OBS: if acess() can't acess the file, it will return -1
 output expected:
-	Error Number : 13
-	Error: : Permission denied
+Error Number : 13
+Error: : Permission denied
 </pre>
