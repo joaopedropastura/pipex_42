@@ -1,9 +1,11 @@
 <h3>I created this file to briefing new external functions allowed this project</h3>
-<h4>function list</h4>
+<h4>function list</h3>
 <ol>
 	<li> perror
 	<li> strerror
 	<li> acess
+	<li> dup
+	<li> dup2
 </ol>
 
 <h4>	1 - perror: </h4>
@@ -34,15 +36,20 @@
 	<li>	X_OK flag : Used to check for execute permission bit.
 </ul>
 
-<h4>	4 - dup && dup2: </h4>
+<h4>	4 - dup </h4>
 >	library: "unistd.h" <br>
->	Name: dup - duplicate file descriptor. <br>
+>	Name: dup - duplicate an open file descriptor. <br>
 >	prototype: int	dup(int	oldfd); <br>
+>	This function returns a new open file descriptor. <br>
+>	If the copy is successfully created, then the original and copy file descriptors(returns fuction value) may be used interchangeably.
+>	The example(4) shows how dup works.<br>
+
+<h4>	5 - dup2 </h4>
+>	library: "unistd.h" <br>
+>	Name: dup2 - duplicate file descriptor. <br>
 >	prototype: int	dup2(int oldfd, int newfd); <br>
->	This function is very similar to <b>perror</b>, except its returns a pointer string error. <br>
->	The example(2) shows how strerror works.<br>
-
-
+>	This function is very similar to <b>dup</b> the basic diference between them is that istead of using . <br>
+>	The example(5) shows how dup2 works.<br>
 
 <h4>-----------------EXAMPLES-----------------</h4>
 
@@ -89,7 +96,6 @@ output expected: fopen() failed: No such file or directory.
 **example 3**<br>
 <pre>
 #include unistd.h
-#include errno.h
 #include stdio.h
 int main()
 {
@@ -109,4 +115,28 @@ OBS: if acess() can't acess the file, it will return -1
 output expected:
 Error Number : 13
 Error: : Permission denied
+</pre>
+**example 4**<br>
+<pre>
+#include unistd.h
+#include errno.h
+#include stdio.h
+int main()
+{
+	fd = open("duptest.txt", O_WRONLY | O_CREAT, 0777);
+	if(fd == -1)
+	{
+		printf("Error Number : %i\n", errno);
+		perror("Error: ");
+	}
+	duptest = dup(fd);
+	write(duptest, "lapis sem cor descolorindo tela colorida\n", 41);
+	write(fd, "lapis de cor colorindo casas sem cor\n", 37);
+
+	return(0);
+}
+OBS: you can close originally open file descriptor and manipulate the new variable like original. This copy can also be used to do some file operation with the same file "duptest.txt"
+output expected, in duptest.txt:
+lapis de cor colorindo casas sem cor
+ collapis de cor colorindo casas sem cor
 </pre>
