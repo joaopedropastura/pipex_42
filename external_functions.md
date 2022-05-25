@@ -41,7 +41,7 @@
 >	Name: dup - duplicate an open file descriptor. <br>
 >	prototype: int	dup(int	oldfd); <br>
 >	This function returns a new open file descriptor. <br>
->	If the copy is successfully created, then the original and copy file descriptors(returns fuction value) may be used interchangeably.
+>	If the copy is successfully created, then the original and copy file descriptors(returns fuction value) may be used interchangeably.<br>
 >	The example(4) shows how dup works.<br>
 
 <h4>	5 - dup2 </h4>
@@ -49,7 +49,7 @@
 >	Name: dup2 - duplicate file descriptor. <br>
 >	prototype: int	dup2(int oldfd, int newfd); <br>
 >	This function is very similar to <i>dup</i> the basic diference between them is that instead of using the lowest-numbered unused file descriptor, it uses the descriptor number specified by the user. <br>
->	In other words, the file descriptor newfd is adjusted so that it now refers to the same open file description as <i>oldfd</i>.
+>	In other words, the file descriptor newfd is adjusted so that it now refers to the same open file description as <i>oldfd</i>.<br>
 >	The example(5) shows how dup2 works.<br>
 
 <h4>-----------------EXAMPLES-----------------</h4>
@@ -136,7 +136,8 @@ int main()
 
 	return(0);
 }
-OBS: you can close originally open file descriptor and manipulate the new variable like original. This copy can also be used to do some file operation with the same file "duptest.txt"
+OBS: you can close originally open file descriptor and manipulate the new variable like original.
+	This copy can also be used to do some file operation with the same file "duptest.txt"
 output expected, in duptest.txt:
 lapis de cor colorindo casas sem cor
  collapis de cor colorindo casas sem cor
