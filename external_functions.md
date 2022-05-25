@@ -19,7 +19,7 @@
 >	library: "string.h", "errno.h" <br>
 >	Name: strerror - return string describing error number. <br>
 >	prototype: char	*strerror(int errnum); <br>
->	This function is very similar to <b>perror</b>, except its returns a pointer string error. <br>
+>	This function is very similar to <i>perror</i>, except its returns a pointer string error. <br>
 >	The example(2) shows how strerror works.<br>
 
 <h4>	3 - acess: </h4>
@@ -48,7 +48,8 @@
 >	library: "unistd.h" <br>
 >	Name: dup2 - duplicate file descriptor. <br>
 >	prototype: int	dup2(int oldfd, int newfd); <br>
->	This function is very similar to <b>dup</b> the basic diference between them is that istead of using . <br>
+>	This function is very similar to <i>dup</i> the basic diference between them is that instead of using the lowest-numbered unused file descriptor, it uses the descriptor number specified by the user. <br>
+>	In other words, the file descriptor newfd is adjusted so that it now refers to the same open file description as <i>oldfd</i>.
 >	The example(5) shows how dup2 works.<br>
 
 <h4>-----------------EXAMPLES-----------------</h4>
@@ -139,4 +140,27 @@ OBS: you can close originally open file descriptor and manipulate the new variab
 output expected, in duptest.txt:
 lapis de cor colorindo casas sem cor
  collapis de cor colorindo casas sem cor
+</pre>
+**example 5**<br>
+<pre>
+#include unistd.h
+#include errno.h
+#include stdio.h
+int main()
+{
+	fd = open("duptest.txt", O_WRONLY | O_CREAT, 0777);
+	if(fd == -1)
+	{
+		printf("Error Number : %i\n", errno);
+		perror("Error: ");
+	}
+	duptest = dup2(fd, 1);
+	write(duptest, "lapis sem cor descolorindo tela colorida\n", 41);
+	printf("this printf should be printed on terminal");
+	return(0);
+}
+OBS: you can use and chose where return output funcition
+output expected, in duptest.txt:
+lapis de cor colorindo casas sem cor
+this printf should be printed on terminal
 </pre>

@@ -6,7 +6,7 @@
 /*   By: jpedro-s < jpedro-s@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 00:43:08 by jpedro-s          #+#    #+#             */
-/*   Updated: 2022/05/20 02:28:51 by jpedro-s         ###   ########.fr       */
+/*   Updated: 2022/05/25 10:22:10 by jpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,19 @@
 #include <stdlib.h> //malloc
 #include <string.h> // strerror
 #include <errno.h>
+#include <fcntl.h> //open
 
-int main()
+
+int main(int argc, char *envp[])
 {
-	FILE *fp;
-	int fd;
-	char *str;
-	char *s = {"lapis de cor colorindo casas sem cor"};
-	int len = 0;
+	FILE	*fp;
+	int		fd;
+	char	*str;
+	char	*s = {"lapis de cor colorindo casas sem cor"};
+	int		len = 0;
+	int		duptest;
 	char	*strerr;
+
 	while(s[len])
 		len++;
 	printf("\nlen:%i", len);
@@ -38,26 +42,21 @@ int main()
 		str[len] = s[len];
 		len++;
 	}
+	// close(1);
+	// fd = dup(1);
 	// rename("test.txt", "ntest.txt");
-	fp = fopen("non_existfile.txt", "r");
-	fd = access("ntest.txt", X_OK);
+	// duptest = open("ntest.txt", O_WRONLY);
+	fd = open("duptest.txt", O_WRONLY | O_CREAT, 0777);
 	if(fd == -1)
 	{
 		printf("Error Number : %i\n", errno);
 		perror("Error: ");
-
 	}
-	else
-		printf("No error\n");
-	if(fp == NULL)
-	{
-		strerr = strerror(errno);
-		printf("fopen() failed: %s", strerr);
-		perror("fopen() failed");
-	}
-	else
-		printf("deu certo bobao");
-		printf("\nstr: %s\n", str);
+	duptest = dup(fd);
+	close(duptest);
+	write(duptest, "lapis sem cor descolorindo tela colorida\n", 41);
+	write(fd, "lapis de cor colorindo casas sem cor\n", 37);
+	int i = 0;
 
 	return(0);
 }
