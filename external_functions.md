@@ -6,6 +6,7 @@
 	<li> acess
 	<li> dup
 	<li> dup2
+	<li> execve
 </ol>
 
 <h4>	1 - perror: </h4>
@@ -52,6 +53,15 @@
 >	In other words, the file descriptor newfd is adjusted so that it now refers to the same open file description as <i>oldfd</i>.<br>
 >	The example(5) shows how dup2 works.<br>
 
+<h4>	6 - execve </h4>
+>	library: "unistd.h" <br>
+>	Name: execve - execute program. <br>
+>	prototype: int	execve(const char *pathname, char *const argv[], char *const envp[]); <br>
+>	The execve() system call loads a new program into a process's memory. <br>
+>	The existing process is discarded. <br>
+>	The newly create process grt all new stack, data and heap. In other words, its almost like you're replacing what was running with something else <br>
+>	This system call not return any value, unless will be have a problem.<br>
+>	The example(6) shows how execve works.<br>
 <h4>-----------------EXAMPLES-----------------</h4>
 
 **example 1**<br>
@@ -164,4 +174,30 @@ OBS: you can use and chose where return output funcition
 output expected, in duptest.txt:
 lapis de cor colorindo casas sem cor
 this printf should be printed on terminal
+</pre>
+**example 6**<br>
+<pre>
+#include unistd.h
+#include errno.h
+#include stdio.h
+int main()
+{
+	char	cmd[] = "/bin/ls";
+
+	char	*argV[] = {"ls", "-l", NULL};
+	char	*envP[] = {NULL};
+
+	printf("Start of execve call %s: \n", cmd);
+	printf("====================================================\n");
+	if(execve(cmd, argV, envP) == -1)
+	{
+		perror("Could not execute execve ");
+	}
+	printf("Ooooops, something went wrong!\n");
+	return(0);
+}
+OBS: you can use and chose where return output funcition.
+	envp is an array of strings, conventionally of the form key=value, which are passed as environment to the new program.
+	Both args and env must be terminated by a null pointer.
+output expected: the same output if you put command "ls -l" on your current directory.
 </pre>
