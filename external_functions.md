@@ -62,6 +62,21 @@
 >	The newly create process grt all new stack, data and heap. In other words, its almost like you're replacing what was running with something else <br>
 >	This system call not return any value, unless will be have a problem.<br>
 >	The example(6) shows how execve works.<br>
+
+<h4>	7 - exit </h4>
+>	library: "stdlib.h" <br>
+>	Name: exit - cause normal process termination. <br>
+>	prototype: void	exit(int status); <br>
+>	In C linguage, exit() terminates the calling process whithout executing the rest code whicj is after the exit() function.<br>
+>	There are two types of exit status in C/C++
+<ul>
+	<li>exit success
+	<li>exit failure
+<ul>
+>	exit success: Its indicated by "exit(0)" statement which means successful.<br>
+>	exit faulure: Its indicated by "exit(1)" statement wich means the abnormal termination of the program.<br>
+>	OBS: we can use diferents integers to indicate diferent types of errors in code.<br>
+>	The example(7) shows how exit works.<br>
 <h4>-----------------EXAMPLES-----------------</h4>
 
 **example 1**<br>
@@ -197,7 +212,24 @@ int main()
 	return(0);
 }
 OBS: you can use and chose where return output funcition.
-	envp is an array of strings, conventionally of the form key=value, which are passed as environment to the new program.
+	envp is an array of strings, conventionally of the form key=value,
+	which are passed as environment to the new program.
 	Both args and env must be terminated by a null pointer.
 output expected: the same output if you put command "ls -l" on your current directory.
+</pre>
+
+**example 6**<br>
+<pre>
+#include unistd.h
+#include stdio.h
+int main()
+{
+	printf("start\n");
+	exit(0);
+	printf("end of program\n");
+	return(0);
+}
+OBS: In the above program, when the exit() function is called, it exits the execution
+	immediately and it does not print the statement in the second printf.
+output expected: start.
 </pre>
