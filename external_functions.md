@@ -7,6 +7,8 @@
 	<li> dup
 	<li> dup2
 	<li> execve
+	<li> error
+	<li> fork
 </ol>
 
 <h4>	1 - perror: </h4>
@@ -72,14 +74,24 @@
 <ul>
 	<li>exit success
 	<li>exit failure
-<ul>
 >	exit success: Its indicated by "exit(0)" statement which means successful.<br>
 >	exit faulure: Its indicated by "exit(1)" statement wich means the abnormal termination of the program.<br>
+</ul>
 >	OBS: we can use diferents integers to indicate diferent types of errors in code.<br>
 >	The example(7) shows how exit works.<br>
+
+<h4>	8 - fork </h4>
+>	library: "unistd.h" <br>
+>	Name: fork - create a child process. <br>
+>	prototype: pid_t fork(void) <br>
+>	Create a new process by duplicating the calling process. The new process is referred to a sthe <i>child process</i>. The calling process is referred to as the parent process. <br>
+>	
+>	OBS: the child process run in different memory spaces. <br>
+>	The example(8) shows how exit works.<br>
 <h4>-----------------EXAMPLES-----------------</h4>
 
 **example 1**<br>
+
 <pre>
 #include stdio.h
 int main()
@@ -96,6 +108,7 @@ int main()
 OBS: FILE variable - this is an object type suitable for storing information for a file stream.
 output expected: fopen() failed: No such file or directory.
 </pre>
+
 **example 2**<br>
 <pre>
 #include string.h
@@ -119,6 +132,7 @@ OBS: The strerror(errno) parameter its a macro and signify the number of last er
 another words this lib has a list with all errors and their descriptions and then match with your error.
 output expected: fopen() failed: No such file or directory.
 </pre>
+
 **example 3**<br>
 <pre>
 #include unistd.h
@@ -142,6 +156,7 @@ output expected:
 Error Number : 13
 Error: : Permission denied
 </pre>
+
 **example 4**<br>
 <pre>
 #include unistd.h
@@ -167,6 +182,7 @@ output expected, in duptest.txt:
 lapis de cor colorindo casas sem cor
  collapis de cor colorindo casas sem cor
 </pre>
+
 **example 5**<br>
 <pre>
 #include unistd.h
@@ -190,6 +206,7 @@ output expected, in duptest.txt:
 lapis de cor colorindo casas sem cor
 this printf should be printed on terminal
 </pre>
+
 **example 6**<br>
 <pre>
 #include unistd.h
@@ -218,7 +235,23 @@ OBS: you can use and chose where return output funcition.
 output expected: the same output if you put command "ls -l" on your current directory.
 </pre>
 
-**example 6**<br>
+**example 7**<br>
+<pre>
+#include unistd.h
+#include stdio.h
+int main()
+{
+	printf("start\n");
+	exit(0);
+	printf("end of program\n");
+	return(0);
+}
+OBS: In the above program, when the exit() function is called, it exits the execution
+	immediately and it does not print the statement in the second printf.
+output expected: start.
+</pre>
+
+**example 8**<br>
 <pre>
 #include unistd.h
 #include stdio.h
