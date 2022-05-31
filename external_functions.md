@@ -92,7 +92,8 @@
 
 **example 1**<br>
 
-<pre>
+```c
+
 #include stdio.h
 int main()
 {
@@ -107,7 +108,7 @@ int main()
 }
 OBS: FILE variable - this is an object type suitable for storing information for a file stream.
 output expected: fopen() failed: No such file or directory.
-</pre>
+```
 
 **example 2**<br>
 <pre>
