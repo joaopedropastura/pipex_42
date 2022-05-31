@@ -111,9 +111,9 @@ output expected: fopen() failed: No such file or directory.
 ```
 
 **example 2**<br>
-<pre>
-#include string.h
-#include errno.h
+```c
+#include <string.h>
+#include <errno.h>
 int main()
 {
 	FILE *f;
@@ -129,15 +129,16 @@ int main()
 		fclose(f);
 	return(0);
 }
+```
 OBS: The strerror(errno) parameter its a macro and signify the number of last error,
 another words this lib has a list with all errors and their descriptions and then match with your error.
 output expected: fopen() failed: No such file or directory.
-</pre>
+
 
 **example 3**<br>
-<pre>
-#include unistd.h
-#include stdio.h
+```c
+#include <unistd.h>
+#include <stdio.h>
 int main()
 {
 	int fd;
@@ -156,13 +157,13 @@ OBS: if acess() can't acess the file, it will return -1
 output expected:
 Error Number : 13
 Error: : Permission denied
-</pre>
+```
 
 **example 4**<br>
-<pre>
-#include unistd.h
-#include errno.h
-#include stdio.h
+```c
+#include <unistd.h>
+#include <errno.h>
+#include <stdio.h>
 int main()
 {
 	fd = open("duptest.txt", O_WRONLY | O_CREAT, 0777);
@@ -182,13 +183,13 @@ OBS: you can close originally open file descriptor and manipulate the new variab
 output expected, in duptest.txt:
 lapis de cor colorindo casas sem cor
  collapis de cor colorindo casas sem cor
-</pre>
+```
 
 **example 5**<br>
-<pre>
-#include unistd.h
-#include errno.h
-#include stdio.h
+```c
+#include <unistd.h>
+#include <errno.h>
+#include <stdio.h>
 int main()
 {
 	fd = open("duptest.txt", O_WRONLY | O_CREAT, 0777);
@@ -206,13 +207,13 @@ OBS: you can use and chose where return output funcition
 output expected, in duptest.txt:
 lapis de cor colorindo casas sem cor
 this printf should be printed on terminal
-</pre>
+```
 
 **example 6**<br>
-<pre>
-#include unistd.h
-#include errno.h
-#include stdio.h
+```c
+#include <unistd.h>
+#include <errno.h>
+#include <stdio.h>
 int main()
 {
 	char	cmd[] = "/bin/ls";
@@ -234,12 +235,12 @@ OBS: you can use and chose where return output funcition.
 	which are passed as environment to the new program.
 	Both args and env must be terminated by a null pointer.
 output expected: the same output if you put command "ls -l" on your current directory.
-</pre>
+```
 
 **example 7**<br>
-<pre>
-#include unistd.h
-#include stdio.h
+```c
+#include <unistd.h>
+#include <stdio.h>
 int main()
 {
 	printf("start\n");
@@ -250,12 +251,12 @@ int main()
 OBS: In the above program, when the exit() function is called, it exits the execution
 	immediately and it does not print the statement in the second printf.
 output expected: start.
-</pre>
+```
 
 **example 8**<br>
-<pre>
-#include unistd.h
-#include stdio.h
+```c
+#include <unistd.h>
+#include <stdio.h>
 int main()
 {
 	printf("start\n");
@@ -266,4 +267,4 @@ int main()
 OBS: In the above program, when the exit() function is called, it exits the execution
 	immediately and it does not print the statement in the second printf.
 output expected: start.
-</pre>
+```
